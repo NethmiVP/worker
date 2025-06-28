@@ -39,4 +39,8 @@ public class WorkerSkillService {
     public void deleteSkillById(int id){
         skillRepo.deleteSkillById(id);
     }
+
+    public List<WorkerSkill> searchWorkerSkills(int service_id){
+        return skillRepo.searchWorkerSkills(service_id);
+    }
 }

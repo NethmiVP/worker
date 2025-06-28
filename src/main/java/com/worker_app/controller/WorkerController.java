@@ -38,5 +38,11 @@ public class WorkerController {
         workerService.deleteById(id);
     }
 
+    @GetMapping(path = "workers", params = {"fname", "location"})
+    public List<Worker> searchWorkers(@RequestParam String fname, @RequestParam String location){
+        //return null;
+        return workerService.searchWorkers(fname, location);
+    }
+
 
 }

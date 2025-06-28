@@ -38,4 +38,8 @@ public class WorkerService {
         workRepo.deleteById(id);
     }
 
+    public List<Worker> searchWorkers(String fname, String location){
+        return workRepo.searchWorkers(fname, location);
+    }
+
 }

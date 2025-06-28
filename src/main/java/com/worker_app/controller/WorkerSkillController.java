@@ -39,4 +39,10 @@ public class WorkerSkillController {
     public void deleteSkillById(@PathVariable int id){
         workerSkillService.deleteSkillById(id);
     }
+
+    @GetMapping(path = "skills", params = {"service_id"})
+    public List<WorkerSkill> searchWorkerSkills(@RequestParam int service_id){
+        //return null;
+        return workerSkillService.searchWorkerSkills(service_id);
+    }
 }
