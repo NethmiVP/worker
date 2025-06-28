@@ -12,5 +12,5 @@ public interface WorkerSkillRepository extends JpaRepository<WorkerSkill, Intege
 
     @Query("select s from WorkerSkill s where s.service_id=?1")
     //defining a method
-    public List<WorkerSkill> searchWorkerSkills(int service_id);
+    public List<WorkerSkill> searchWorkerSkill(int service_id);
 }

@@ -41,6 +41,6 @@ public class WorkerSkillService {
     }
 
     public List<WorkerSkill> searchWorkerSkills(int service_id){
-        return skillRepo.searchWorkerSkills(service_id);
+        return skillRepo.searchWorkerSkill(service_id);
     }
 }

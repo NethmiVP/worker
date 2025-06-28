@@ -35,7 +35,7 @@ public class WorkerSkillController {
         return workerSkillService.updateWorkerSkills(skill);
     }
 
-    @DeleteMapping(path = "/skills{id}")
+    @DeleteMapping(path = "/skills/{id}")
     public void deleteSkillById(@PathVariable int id){
         workerSkillService.deleteSkillById(id);
     }

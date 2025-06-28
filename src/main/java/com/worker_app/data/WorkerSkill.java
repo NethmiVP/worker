@@ -11,14 +11,14 @@ public class WorkerSkill {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "worker_id")
-    private int worker_id;
+    @Column(name = "work_id")
+    private int work_id;
 
     @Column(name = "service_id")
     private int service_id;
 
     @Column(name = "work_experience")
-    private int work_experience;
+    private String work_experience;
 
     public int getId() {
         return id;
@@ -28,12 +28,12 @@ public class WorkerSkill {
         this.id = id;
     }
 
-    public int getWorker_id() {
-        return worker_id;
+    public int getWork_id() {
+        return work_id;
     }
 
-    public void setWorker_id(int worker_id) {
-        this.worker_id = worker_id;
+    public void setWork_id(int work_id) {
+        this.work_id = work_id;
     }
 
     public int getService_id() {
@@ -44,11 +44,11 @@ public class WorkerSkill {
         this.service_id = service_id;
     }
 
-    public int getWork_experience() {
+    public String getWork_experience() {
         return work_experience;
     }
 
-    public void setWork_experience(int work_experience) {
+    public void setWork_experience(String work_experience) {
         this.work_experience = work_experience;
     }
 }

@@ -39,7 +39,15 @@ public class WorkerService {
     }
 
     public List<Worker> searchWorkers(String fname, String location){
-        return workRepo.searchWorkers(fname, location);
+        return workRepo.searchWorker(fname, location);
+    }
+
+    public List<Worker> searchWorkerNames(String fname){
+        return workRepo.searchWorkerName(fname);
+    }
+
+    public List<Worker> searchWorkerLocations(String location){
+        return workRepo.searchWorkerLocation(location);
     }
 
 }

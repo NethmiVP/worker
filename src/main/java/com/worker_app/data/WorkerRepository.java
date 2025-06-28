@@ -10,7 +10,12 @@ import java.util.List;
 public interface WorkerRepository extends JpaRepository<Worker, Integer> {
 
     @Query("select w from Worker w where w.fname=?1 and w.location=?2")
-    //defining a method
-    public List<Worker> searchWorkers(String fname, String location);
+    public List<Worker> searchWorker(String fname, String location);
+
+    @Query("select wn from Worker wn where wn.fname=?1")
+    public List<Worker> searchWorkerName(String fname);
+
+    @Query("select wl from Worker wl where wl.location=?1")
+    public List<Worker> searchWorkerLocation(String location);
 
 }

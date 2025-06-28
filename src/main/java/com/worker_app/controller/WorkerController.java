@@ -33,15 +33,27 @@ public class WorkerController {
         return workerService.updateWorkers(work);
     }
 
-    @DeleteMapping(path = "/workers{id}")
+    @DeleteMapping(path = "/workers/{id}")
     public void deleteById(@PathVariable int id){
         workerService.deleteById(id);
     }
 
     @GetMapping(path = "workers", params = {"fname", "location"})
-    public List<Worker> searchWorkers(@RequestParam String fname, @RequestParam String location){
+    public List<Worker> searchWorker(@RequestParam String fname, @RequestParam String location){
         //return null;
         return workerService.searchWorkers(fname, location);
+    }
+
+    @GetMapping(path = "workers", params = {"fname"})
+    public List<Worker> searchWorkerNames(@RequestParam String fname){
+        //return null;
+        return workerService.searchWorkerNames(fname);
+    }
+
+    @GetMapping(path = "workers", params = {"location"})
+    public List<Worker> searchWorkerLocations(@RequestParam String location){
+        //return null;
+        return workerService.searchWorkerLocations(location);
     }
 
 
