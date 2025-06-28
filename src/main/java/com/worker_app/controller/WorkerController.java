@@ -56,5 +56,9 @@ public class WorkerController {
         return workerService.searchWorkerLocations(location);
     }
 
+    @PostMapping(path = "/workers/login")
+    public Worker login(@RequestBody Worker work) {
+        return workerService.login(work);
+    }
 
 }

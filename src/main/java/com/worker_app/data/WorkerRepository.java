@@ -18,4 +18,5 @@ public interface WorkerRepository extends JpaRepository<Worker, Integer> {
     @Query("select wl from Worker wl where wl.location=?1")
     public List<Worker> searchWorkerLocation(String location);
 
+    Worker findByUsername(String username);
 }

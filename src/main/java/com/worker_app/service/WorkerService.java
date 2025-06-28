@@ -5,6 +5,9 @@ import com.worker_app.data.WorkerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -26,7 +29,11 @@ public class WorkerService {
         return null;
     }
 
+    private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
     public Worker createWorkers(Worker work){
+        String encodedPassword = passwordEncoder.encode(work.getPassword());
+        work.setPassword(encodedPassword);
         return workRepo.save(work);
     }
 
@@ -49,5 +56,15 @@ public class WorkerService {
     public List<Worker> searchWorkerLocations(String location){
         return workRepo.searchWorkerLocation(location);
     }
+
+    public Worker login(Worker work) {
+        Worker existingWorker = workRepo.findByUsername(work.getUsername());
+        if (existingWorker != null && passwordEncoder.matches(work.getPassword(), existingWorker.getPassword())) {
+            existingWorker.setPassword(null); // Hide the password
+            return existingWorker;
+        } else {
+            return null;
+        }
+}
 
 }
