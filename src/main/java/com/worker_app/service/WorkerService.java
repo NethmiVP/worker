@@ -2,6 +2,7 @@ package com.worker_app.service;
 
 import com.worker_app.data.Worker;
 import com.worker_app.data.WorkerRepository;
+import com.worker_app.service.interservice.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ public class WorkerService {
 
     @Autowired
     private WorkerRepository workRepo;
+    @Autowired
+    private ContractService contractService;
 
     public List<Worker> getAllWorkers(){
         return workRepo.findAll();
@@ -43,6 +46,7 @@ public class WorkerService {
 
     public void deleteById(int id){
         workRepo.deleteById(id);
+        contractService.cancelContracts0ForWorker(id);
     }
 
     public List<Worker> searchWorkers(String fname, String location){
