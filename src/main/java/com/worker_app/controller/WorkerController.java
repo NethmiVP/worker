@@ -3,11 +3,13 @@ package com.worker_app.controller;
 import com.worker_app.data.Worker;
 import com.worker_app.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class WorkerController {
 
     @Autowired
@@ -23,14 +25,16 @@ public class WorkerController {
         return workerService.getWorkerById(id);
     }
 
-    @PostMapping(path = "/workers")
-    public Worker createWorkers(@RequestBody Worker work){
-        return workerService.createWorkers(work);
+    @PostMapping(path = "/workers/create")
+    public ResponseEntity<Worker> createWorkers(@RequestBody Worker work) {
+        Worker signupResult = workerService.createWorkers(work);
+        return ResponseEntity.ok(signupResult);
     }
 
-    @PutMapping(path = "/workers")
-    public Worker updateWorkers(@RequestBody Worker work){
-        return workerService.updateWorkers(work);
+    @PutMapping(path = "/workers/update")
+    public ResponseEntity<Worker> updateWorkers(@RequestBody Worker work) {
+        Worker updateResult = workerService.updateWorkers(work);
+        return ResponseEntity.ok(updateResult);
     }
 
     @DeleteMapping(path = "/workers/{id}")
@@ -56,9 +60,10 @@ public class WorkerController {
         return workerService.searchWorkerLocations(location);
     }
 
-    @PostMapping(path = "/workers/login")
-    public Worker login(@RequestBody Worker work) {
-        return workerService.login(work);
+    @PostMapping("/workers/login")
+    public ResponseEntity<Worker> login(@RequestBody Worker work) {
+        Worker loggedInWorker = workerService.login(work);
+        return ResponseEntity.ok(loggedInWorker);
     }
 
 }

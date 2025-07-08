@@ -18,7 +18,7 @@ public class Worker {
     private String lname;
 
     @Column(name = "contact")
-    private int contact;
+    private String contact;
 
     @Column(name = "location")
     private String location;
@@ -53,11 +53,11 @@ public class Worker {
         this.lname = lname;
     }
 
-    public int getContact() {
+    public String getContact() {
         return contact;
     }
 
-    public void setContact(int contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 
