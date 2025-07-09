@@ -5,6 +5,7 @@ import com.worker_app.data.WorkerSkill;
 import com.worker_app.service.WorkerService;
 import com.worker_app.service.WorkerSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -45,5 +46,11 @@ public class WorkerSkillController {
     public List<WorkerSkill> searchWorkerSkills(@RequestParam int service_id){
         //return null;
         return workerSkillService.searchWorkerSkills(service_id);
+    }
+
+    @DeleteMapping(path = "/skills/services/{id}")
+    public ResponseEntity<Void> deleteWorkerSkillsByServiceId(@PathVariable int id){
+        workerSkillService.deleteWorkerSkillsByServiceId(id);
+        return ResponseEntity.ok().build();
     }
 }
