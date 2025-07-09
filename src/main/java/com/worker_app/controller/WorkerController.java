@@ -66,4 +66,15 @@ public class WorkerController {
         return ResponseEntity.ok(loggedInWorker);
     }
 
+    @RequestMapping(method = RequestMethod.HEAD, path = "/workers/{id}")
+    public ResponseEntity<Void> workerExistsById(@PathVariable int id){
+        Boolean exists = workerService.workerExistsById(id);
+
+        if (exists){
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }
